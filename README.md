@@ -507,7 +507,7 @@ This project is licensed under the MIT License.
 
 For issues or questions:
 - Open an issue on GitHub
-- Email: support@hirelens.ai (example)
+- Email: mathankumarpalani2006@gmail.com
 - Documentation: Check `/docs` endpoint
 
 ---
@@ -530,3 +530,4 @@ If you find HireLens AI helpful, please give it a star on GitHub!
 **Built with ❤️ by AI Engineers for Job Seekers**
 
 *Last Updated: December 2025*
+
