@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - HireLens AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html"><h2>🔍 HireLens AI</h2></a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="login.html" class="btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Register Form -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-card">
+                <h1>Create Account</h1>
+                <p class="auth-subtitle">Start optimizing your resume today</p>
+                
+                <form id="registerForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="your.email@example.com"
+                            autocomplete="email"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required 
+                            placeholder="Create a strong password (min 6 characters)"
+                            autocomplete="new-password"
+                        >
+                        <small class="form-hint">Must be at least 6 characters long</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            name="confirmPassword" 
+                            required 
+                            placeholder="Re-enter your password"
+                            autocomplete="new-password"
+                        >
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="terms" required>
+                            <span>I agree to the Terms of Service and Privacy Policy</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary btn-block" id="registerBtn">
+                        Create Account
+                    </button>
+                    
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+                    <div id="successMessage" class="success-message" style="display: none;"></div>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                </div>
+            </div>
+            
+            <div class="auth-info">
+                <h2>🎯 Why HireLens AI?</h2>
+                <ul class="info-list">
+                    <li>✅ Free to get started</li>
+                    <li>✅ Secure & private analysis</li>
+                    <li>✅ Instant results in seconds</li>
+                    <li>✅ AI-powered recommendations</li>
+                    <li>✅ Track multiple resumes</li>
+                    <li>✅ No credit card required</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 HireLens AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

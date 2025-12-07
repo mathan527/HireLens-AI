@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HireLens AI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-dashboard">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>🔍 HireLens AI</h2>
+            </div>
+            <div class="nav-links">
+                <span id="userEmail" class="user-email"></span>
+                <button onclick="logout()" class="btn-secondary">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+        <div class="container">
+            <!-- Welcome Section -->
+            <div class="dashboard-header">
+                <h1>Welcome to Your Dashboard</h1>
+                <p>Upload your resume and get instant AI-powered analysis</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📄</div>
+                    <div class="stat-info">
+                        <h3 id="totalResumes">0</h3>
+                        <p>Total Resumes</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-info">
+                        <h3 id="avgATSScore">0</h3>
+                        <p>Avg ATS Score</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔗</div>
+                    <div class="stat-info">
+                        <h3 id="totalMatches">0</h3>
+                        <p>Job Matches</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-info">
+                        <h3 id="skillsCount">0</h3>
+                        <p>Skills Found</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="dashboard-grid">
+                <!-- Upload Section -->
+                <div class="dashboard-card upload-card">
+                    <h2>📤 Upload Resume</h2>
+                    <p>Upload your resume in PDF format for instant analysis</p>
+                    
+                    <form id="uploadForm" class="upload-form">
+                        <div class="file-upload-area" id="fileUploadArea">
+                            <input type="file" id="resumeFile" accept=".pdf" hidden>
+                            <div class="upload-icon">📄</div>
+                            <p>Drag & drop your resume here or click to browse</p>
+                            <button type="button" class="btn-primary" onclick="document.getElementById('resumeFile').click()">
+                                Choose PDF File
+                            </button>
+                            <p class="file-name" id="fileName"></p>
+                        </div>
+                        <button type="submit" class="btn-primary btn-block" id="uploadBtn">
+                            Upload & Analyze
+                        </button>
+                    </form>
+                    
+                    <div id="uploadProgress" class="progress-bar" style="display: none;">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div id="uploadMessage" class="message"></div>
+                </div>
+
+                <!-- ATS Score Section -->
+                <div class="dashboard-card">
+                    <h2>🎯 ATS Score</h2>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <canvas id="scoreChart" width="200" height="200"></canvas>
+                            <div class="score-text">
+                                <span class="score-value" id="atsScoreValue">0</span>
+                                <span class="score-label">/100</span>
+                            </div>
+                        </div>
+                        <p class="score-interpretation" id="scoreInterpretation">Upload a resume to see your score</p>
+                    </div>
+                    
+                    <div class="score-breakdown" id="scoreBreakdown" style="display: none;">
+                        <h3>Score Breakdown</h3>
+                        <div class="breakdown-item">
+                            <span>Keyword Density</span>
+                            <span id="keywordScore">0%</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Formatting</span>
+                            <span id="formattingScore">0%</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Action Verbs</span>
+                            <span id="actionVerbsScore">0%</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Experience</span>
+                            <span id="experienceScore">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="dashboard-card">
+                <h2>🧠 Extracted Skills</h2>
+                <div class="skills-tabs">
+                    <button class="tab-btn active" onclick="showSkillsTab('all')">All Skills</button>
+                    <button class="tab-btn" onclick="showSkillsTab('technical')">Technical</button>
+                    <button class="tab-btn" onclick="showSkillsTab('soft')">Soft Skills</button>
+                    <button class="tab-btn" onclick="showSkillsTab('tools')">Tools</button>
+                </div>
+                <div id="skillsContainer" class="skills-container">
+                    <p class="empty-state">Upload a resume to see extracted skills</p>
+                </div>
+            </div>
+
+            <!-- Job Matching Section -->
+            <div class="dashboard-card">
+                <h2>🔗 Job Matching</h2>
+                <p>Compare your resume with a job description</p>
+                
+                <form id="jobMatchForm" class="job-match-form">
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title (Optional)</label>
+                        <input type="text" id="jobTitle" placeholder="e.g., Senior Software Engineer">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="jobDescription">Job Description</label>
+                        <textarea 
+                            id="jobDescription" 
+                            rows="6" 
+                            placeholder="Paste the job description here..."
+                            required
+                        ></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" id="matchBtn">
+                        Calculate Match
+                    </button>
+                </form>
+                
+                <div id="matchResults" class="match-results" style="display: none;">
+                    <div class="match-score">
+                        <h3>Match Score</h3>
+                        <div class="match-percentage" id="matchPercentage">0%</div>
+                        <p id="matchInterpretation"></p>
+                    </div>
+                    
+                    <div class="skills-comparison">
+                        <div class="matched-skills">
+                            <h4>✅ Matched Skills</h4>
+                            <div id="matchedSkillsList" class="skills-list"></div>
+                        </div>
+                        <div class="missing-skills">
+                            <h4>❌ Missing Skills</h4>
+                            <div id="missingSkillsList" class="skills-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Feedback Section -->
+            <div class="dashboard-card" id="aiFeedbackCard" style="display: none;">
+                <h2>🤖 AI Resume Feedback</h2>
+                <div id="aiFeedbackContent" class="ai-feedback">
+                    <!-- AI feedback will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Skills Chart -->
+            <div class="dashboard-card">
+                <h2>📊 Skills Visualization</h2>
+                <canvas id="skillsChart" height="80"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Analyzing your resume...</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 HireLens AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
