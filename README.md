@@ -471,56 +471,6 @@ This project is licensed under the MIT License.
 
 ---
 
-## 🎯 Roadmap
-
-- [ ] Resume templates
-- [ ] Cover letter generation
-- [ ] Multiple file format support
-- [ ] Email notifications
-- [ ] Resume versioning
-- [ ] Advanced analytics
-- [ ] LinkedIn integration
-- [ ] Bulk job matching
-
----
-
-## 💡 Tips for Best Results
-
-### Resume Optimization Tips:
-
-1. **Use Action Verbs**: Start bullet points with strong verbs (Developed, Implemented, Led)
-2. **Quantify Achievements**: Include numbers and metrics (Increased by 30%)
-3. **Keywords**: Include relevant technical skills and tools
-4. **Format**: Use clear sections (Experience, Education, Skills)
-5. **Length**: Keep it 1-2 pages (400-2000 words optimal)
-
-### ATS Score Improvement:
-
-- **80-100**: Excellent - Ready to apply
-- **70-79**: Good - Minor tweaks needed
-- **60-69**: Fair - Review missing skills
-- **Below 60**: Needs significant work
-
----
-
-## 📞 Support
-
-For issues or questions:
-- Open an issue on GitHub
-- Email: mathankumarpalani2006@gmail.com
-- Documentation: Check `/docs` endpoint
-
----
-
-## 🙏 Acknowledgments
-
-- **spaCy** for NLP capabilities
-- **FastAPI** for the excellent framework
-- **Chart.js** for visualizations
-- **OpenAI/Google** for AI APIs
-
----
-
 ## ⭐ Star this project
 
 If you find HireLens AI helpful, please give it a star on GitHub!
@@ -530,4 +480,5 @@ If you find HireLens AI helpful, please give it a star on GitHub!
 **Built with ❤️ by AI Engineers for Job Seekers**
 
 *Last Updated: December 2025*
+
 
